@@ -1,0 +1,95 @@
+import random
+def hangman():
+    list=['mango','banana','carrot','India','cherry','apple','orange']
+    word=random.choice(list)
+    turns=10
+    guesses=''
+    valid_letters=set('abcdefghijklmnopqrstuvwxyz')
+    while len(word)>0:
+        correct_word=""
+
+        for letter in word:
+            if letter in guesses:
+                correct_word+=letter
+            else:
+                correct_word+="_ "
+        if correct_word==word:
+            print(correct_word)
+            print("You Won!!!")
+            break
+        print("Guess the words ",correct_word)
+        guess=input()
+        if guess in valid_letters:
+            guesses+=guess
+        else:
+            print("Enter the valid character")
+            guess=input()
+        if guess not in word:
+            turns-=1
+
+
+            if turns==9:
+                print("9 chances left!!")
+                print("---------------")
+            if turns==8:
+                print("8 chances left!!")
+                print("--------------")
+                print("       O")
+
+            if turns==7:
+                print("7 chances left!!")
+                print("--------------")
+                print("       O      ")
+                print("       |      ")
+            if turns==6:
+                print("6 chances left!!")
+                print("--------------")
+                print("       O      ")
+                print("       |      ")
+                print("      /       ")
+            if turns==5:
+                print("5 chances left!!")
+                print("--------------")
+                print("       O      ")
+                print("       |      ")
+                print("      / \     ")
+            if turns==4:
+                print("4 chances left!!")
+                print("--------------")
+                print("      \O      ")
+                print("       |      ")
+                print("      / \     ")
+            if turns==3:
+                print("3 chances left!!")
+                print("--------------")
+                print("      \O/     ")
+                print("       |      ")
+                print("      / \     ")
+            if turns==2:
+                print("2 chances left!!")
+                print("--------------")
+                print("      \O/ |   ")
+                print("       |      ")
+                print("      / \     ")
+            if turns==1:
+                print("Only 1 chance left!!")
+                print("--------------")
+                print("      \O/_|   ")
+                print("       |      ")
+                print("      / \     ")
+            if turns==0:
+                print("You loose!!")
+                print("Better luck next time!")
+                print("--------------")
+                print("       O_|    ")
+                print("      /|\     ")
+                print("      / \     ")
+                break
+
+
+player_name=input("Enter your name: ")
+print("Hii ",player_name,"!!")
+print("Welcome to the hangman game..")
+print("__________________________")
+print("You have only 10 attempts to guess the word!")
+hangman()
